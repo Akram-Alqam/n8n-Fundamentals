@@ -1,0 +1,201 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        -32
+      ],
+      "id": "e2d92068-97b1-467f-a2d2-311b0be22a48",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d5ef113f-e724-4349-8c45-cb9a2c3cfaf0",
+              "name": "Name",
+              "value": "Ahmad",
+              "type": "string"
+            },
+            {
+              "id": "0ea01626-e632-4d38-9a2a-eefd22c256df",
+              "name": "Email",
+              "value": "ahmad@example.com",
+              "type": "string"
+            },
+            {
+              "id": "a77dd592-1bde-4b0d-ad5d-232a797920aa",
+              "name": "Phone",
+              "value": "05123456789",
+              "type": "string"
+            },
+            {
+              "id": "cabe3dd4-efa6-4279-8415-cbd2f8d5b419",
+              "name": "Message",
+              "value": "Good Morning",
+              "type": "string"
+            },
+            {
+              "id": "8b804b3d-a26d-410a-b2c0-e8efe4f3f8d9",
+              "name": "To Do",
+              "value": "Follow up",
+              "type": "string"
+            },
+            {
+              "id": "64cf0541-4b5b-4800-896f-6405b7a77528",
+              "name": "Label",
+              "value": "Lead",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        128,
+        -32
+      ],
+      "id": "6f0a7993-3e80-4975-b1d2-c23f12a9f8c4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Y1xopWVDQQt4vwFCqta2TeaAZteNOSgRxnkIXR1_8Y0",
+          "mode": "list",
+          "cachedResultName": "n8n Fundamentals",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y1xopWVDQQt4vwFCqta2TeaAZteNOSgRxnkIXR1_8Y0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y1xopWVDQQt4vwFCqta2TeaAZteNOSgRxnkIXR1_8Y0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "Email": "={{ $json.Email }}",
+            "To Do": "={{ $json['To Do'] }}",
+            "Message": "={{ $json.Message }}",
+            "Phone": "={{ $json.Phone }}",
+            "Lable": "={{ $json.Label }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "To Do",
+              "displayName": "To Do",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lable",
+              "displayName": "Lable",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        -32
+      ],
+      "id": "c7aa3200-5e32-40a5-b8f1-9f316d7abea9",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "HMKb8tFIXUi03gek",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7bc1f3f8ff876ebc067869ade274e0b0ae7fa806c41794b4af16ee32b4b792c4"
+  }
+}
